@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ page.title }} | {{ site.title }}</title>
     <meta name="description" content="{{ page.description | default: site.description }}">
+    <meta name="theme-color" content="#e74c3c">
     <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
     {% seo %}
 </head>
@@ -19,9 +20,9 @@
             </div>
             <nav class="main-nav">
                 <ul>
-                    <li><a href="{{ '/' | relative_url }}">Acasă</a></li>
-                    <li><a href="{{ '/despre' | relative_url }}">Despre</a></li>
-                    <li><a href="{{ '/arhiva' | relative_url }}">Arhivă</a></li>
+                    <li><a href="{{ '/' | relative_url }}">🏠 Acasă</a></li>
+                    <li><a href="{{ '/despre' | relative_url }}">ℹ️ Despre</a></li>
+                    <li><a href="{{ '/arhiva' | relative_url }}">📚 Arhivă</a></li>
                 </ul>
             </nav>
         </div>
@@ -37,7 +38,15 @@
         <div class="container">
             <p>&copy; {{ 'now' | date: "%Y" }} {{ site.title }}. Toate drepturile rezervate.</p>
             <p>Dedicat pasionaților de proba de 800 metri în atletism.</p>
+            <div class="footer-links">
+                <a href="{{ '/' | relative_url }}">Acasă</a>
+                <a href="{{ '/despre' | relative_url }}">Despre</a>
+                <a href="{{ '/arhiva' | relative_url }}">Arhivă</a>
+            </div>
         </div>
     </footer>
+
+    <!-- JavaScript -->
+    <script src="{{ '/assets/js/main.js' | relative_url }}"></script>
 </body>
 </html>

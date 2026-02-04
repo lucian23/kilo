@@ -15,12 +15,12 @@ title: Acasă
     <section class="featured-stats">
         <div class="stat-card">
             <h3>🏆 Record Mondial Masculin</h3>
-            <p class="stat-value">1:40.91</p>
+            <p class="stat-value" data-target="100.91">0:00.00</p>
             <p class="stat-info">David Rudisha (Kenya, 2012)</p>
         </div>
         <div class="stat-card">
             <h3>🏆 Record Mondial Feminin</h3>
-            <p class="stat-value">1:53.28</p>
+            <p class="stat-value" data-target="113.28">0:00.00</p>
             <p class="stat-info">Jarmila Kratochvílová (1983)</p>
         </div>
         <div class="stat-card">
@@ -30,8 +30,88 @@ title: Acasă
         </div>
     </section>
 
+    <!-- Interactive Timer Section -->
+    <section class="timer-section">
+        <h2>⏱️ Cronometru 800m</h2>
+        <p style="font-size: 1.2rem; margin-bottom: 1rem;">Antrenează-te și cronometrează-ți timpii!</p>
+        <div class="timer-display" id="timerDisplay">00:00.00</div>
+        <div class="timer-controls">
+            <button class="timer-btn start" id="startBtn" onclick="startTimer()">▶️ Start</button>
+            <button class="timer-btn stop" id="stopBtn" onclick="stopTimer()">⏸️ Stop</button>
+            <button class="timer-btn reset" id="resetBtn" onclick="resetTimer()">🔄 Reset</button>
+            <button class="timer-btn" id="lapBtn" onclick="recordLap()">📊 Salvează Timp</button>
+        </div>
+        <div id="lapTimes" style="margin-top: 2rem; font-size: 1.1rem;"></div>
+    </section>
+
+    <!-- Progress Tracker Section -->
+    <section class="progress-tracker">
+        <h2>📈 Urmărește-ți Progresul</h2>
+        <p style="text-align: center; margin-bottom: 2rem; font-size: 1.1rem;">
+            Salvează timpii tăi și vezi cum evoluezi!
+        </p>
+        <div class="progress-form">
+            <input type="text" id="timeInput" class="progress-input" placeholder="Timp (ex: 2:15.50)" />
+            <input type="date" id="dateInput" class="progress-input" />
+            <button class="progress-btn" onclick="addProgress()">➕ Adaugă Timp</button>
+        </div>
+        <ul class="progress-list" id="progressList"></ul>
+    </section>
+
+    <!-- Records Visualization -->
+    <section class="records-viz">
+        <h2>🌍 Recorduri Mondiale - Evoluție</h2>
+        <div class="records-chart">
+            <div class="record-bar">
+                <div class="record-label">
+                    <span>🥇 David Rudisha (2012)</span>
+                    <span>1:40.91</span>
+                </div>
+                <div class="record-progress">
+                    <div class="record-fill" data-width="100" style="width: 0%">1:40.91</div>
+                </div>
+            </div>
+            <div class="record-bar">
+                <div class="record-label">
+                    <span>🥈 Wilson Kipketer (1997)</span>
+                    <span>1:41.11</span>
+                </div>
+                <div class="record-progress">
+                    <div class="record-fill" data-width="98" style="width: 0%">1:41.11</div>
+                </div>
+            </div>
+            <div class="record-bar">
+                <div class="record-label">
+                    <span>🥉 Sebastian Coe (1981)</span>
+                    <span>1:41.73</span>
+                </div>
+                <div class="record-progress">
+                    <div class="record-fill" data-width="95" style="width: 0%">1:41.73</div>
+                </div>
+            </div>
+            <div class="record-bar">
+                <div class="record-label">
+                    <span>👟 Alberto Juantorena (1976)</span>
+                    <span>1:43.50</span>
+                </div>
+                <div class="record-progress">
+                    <div class="record-fill" data-width="90" style="width: 0%">1:43.50</div>
+                </div>
+            </div>
+            <div class="record-bar">
+                <div class="record-label">
+                    <span>🏃 Peter Snell (1962)</span>
+                    <span>1:44.30</span>
+                </div>
+                <div class="record-progress">
+                    <div class="record-fill" data-width="87" style="width: 0%">1:44.30</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <section class="recent-posts">
-        <h2>Articole Recente</h2>
+        <h2>📚 Articole Recente</h2>
         
         {% if site.posts.size > 0 %}
         <div class="posts-grid">
@@ -42,13 +122,13 @@ title: Acasă
                 </h3>
                 <div class="post-card-meta">
                     <time datetime="{{ post.date | date_to_xmlschema }}">
-                        {{ post.date | date: "%d %B %Y" }}
+                        📅 {{ post.date | date: "%d %B %Y" }}
                     </time>
                 </div>
                 <div class="post-card-excerpt">
                     {{ post.excerpt | strip_html | truncatewords: 30 }}
                 </div>
-                <a href="{{ post.url | relative_url }}" class="read-more">Citește mai mult →</a>
+                <a href="{{ post.url | relative_url }}" class="read-more">Citește mai mult</a>
             </article>
             {% endfor %}
         </div>
@@ -58,7 +138,7 @@ title: Acasă
     </section>
 
     <section class="about-800m">
-        <h2>De ce 800 metri?</h2>
+        <h2>🏃‍♂️ De ce 800 metri?</h2>
         <p>
             Proba de 800 metri este considerată una dintre cele mai dificile și tactice curse din atletism. 
             Combină viteza unui sprinter cu rezistența unui alergător de semifond, necesitând o strategie 
@@ -66,4 +146,9 @@ title: Acasă
             este la fel de important ca fizicul.
         </p>
     </section>
+</div>
+
+<!-- Scroll to Top Button -->
+<div class="scroll-to-top" id="scrollToTop" onclick="scrollToTop()">
+    ↑
 </div>
