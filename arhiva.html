@@ -1,0 +1,35 @@
+---
+layout: page
+title: Arhivă Articole
+permalink: /arhiva/
+---
+
+<div class="archive">
+    <p class="archive-intro">Toate articolele noastre despre proba de 800 metri, organizate cronologic.</p>
+
+    {% if site.posts.size > 0 %}
+        {% for post in site.posts %}
+            {% assign current_year = post.date | date: "%Y" %}
+            {% assign previous_year = post.previous.date | date: "%Y" %}
+            
+            {% if forloop.first or current_year != previous_year %}
+                {% unless forloop.first %}</ul>{% endunless %}
+                <h2 class="archive-year">{{ current_year }}</h2>
+                <ul class="archive-list">
+            {% endif %}
+            
+            <li class="archive-item">
+                <time datetime="{{ post.date | date_to_xmlschema }}" class="archive-date">
+                    {{ post.date | date: "%d %B" }}
+                </time>
+                <a href="{{ post.url | relative_url }}" class="archive-link">
+                    {{ post.title }}
+                </a>
+            </li>
+            
+            {% if forloop.last %}</ul>{% endif %}
+        {% endfor %}
+    {% else %}
+        <p>Nu există articole încă.</p>
+    {% endif %}
+</div>

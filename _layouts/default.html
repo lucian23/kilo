@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ page.title }} | {{ site.title }}</title>
+    <meta name="description" content="{{ page.description | default: site.description }}">
+    <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
+    {% seo %}
+</head>
+<body>
+    <header class="site-header">
+        <div class="container">
+            <div class="header-content">
+                <h1 class="site-title">
+                    <a href="{{ '/' | relative_url }}">🏃‍♂️ {{ site.title }}</a>
+                </h1>
+                <p class="site-description">{{ site.description }}</p>
+            </div>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="{{ '/' | relative_url }}">Acasă</a></li>
+                    <li><a href="{{ '/despre' | relative_url }}">Despre</a></li>
+                    <li><a href="{{ '/arhiva' | relative_url }}">Arhivă</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="main-content">
+        <div class="container">
+            {{ content }}
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <p>&copy; {{ 'now' | date: "%Y" }} {{ site.title }}. Toate drepturile rezervate.</p>
+            <p>Dedicat pasionaților de proba de 800 metri în atletism.</p>
+        </div>
+    </footer>
+</body>
+</html>

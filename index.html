@@ -1,0 +1,69 @@
+---
+layout: default
+title: Acasă
+---
+
+<div class="home">
+    <section class="hero">
+        <h2>Bine ai venit la blogul dedicat probei de 800 metri!</h2>
+        <p class="hero-description">
+            Descoperă tehnici, strategii de cursă, planuri de antrenament și povești inspiraționale 
+            din lumea celor mai captivante două tururi de pistă din atletism.
+        </p>
+    </section>
+
+    <section class="featured-stats">
+        <div class="stat-card">
+            <h3>🏆 Record Mondial Masculin</h3>
+            <p class="stat-value">1:40.91</p>
+            <p class="stat-info">David Rudisha (Kenya, 2012)</p>
+        </div>
+        <div class="stat-card">
+            <h3>🏆 Record Mondial Feminin</h3>
+            <p class="stat-value">1:53.28</p>
+            <p class="stat-info">Jarmila Kratochvílová (1983)</p>
+        </div>
+        <div class="stat-card">
+            <h3>📏 Distanța</h3>
+            <p class="stat-value">800m</p>
+            <p class="stat-info">2 tururi de pistă</p>
+        </div>
+    </section>
+
+    <section class="recent-posts">
+        <h2>Articole Recente</h2>
+        
+        {% if site.posts.size > 0 %}
+        <div class="posts-grid">
+            {% for post in site.posts limit:6 %}
+            <article class="post-card">
+                <h3 class="post-card-title">
+                    <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
+                </h3>
+                <div class="post-card-meta">
+                    <time datetime="{{ post.date | date_to_xmlschema }}">
+                        {{ post.date | date: "%d %B %Y" }}
+                    </time>
+                </div>
+                <div class="post-card-excerpt">
+                    {{ post.excerpt | strip_html | truncatewords: 30 }}
+                </div>
+                <a href="{{ post.url | relative_url }}" class="read-more">Citește mai mult →</a>
+            </article>
+            {% endfor %}
+        </div>
+        {% else %}
+        <p>Nu există articole încă. Revino în curând!</p>
+        {% endif %}
+    </section>
+
+    <section class="about-800m">
+        <h2>De ce 800 metri?</h2>
+        <p>
+            Proba de 800 metri este considerată una dintre cele mai dificile și tactice curse din atletism. 
+            Combină viteza unui sprinter cu rezistența unui alergător de semifond, necesitând o strategie 
+            perfectă și o execuție impecabilă. Este o cursă unde fiecare secundă contează și unde mentalul 
+            este la fel de important ca fizicul.
+        </p>
+    </section>
+</div>

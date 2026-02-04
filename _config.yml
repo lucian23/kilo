@@ -1,0 +1,42 @@
+# Site settings
+title: "800m Athletics Blog"
+description: "Blog dedicat probei de 800 metri în atletism - tehnici, antrenamente, strategii și performanțe"
+baseurl: ""
+url: ""
+
+# Author
+author:
+  name: "800m Athletics"
+  email: "contact@800mathletics.com"
+
+# Build settings
+markdown: kramdown
+permalink: /:year/:month/:day/:title/
+
+# Collections
+collections:
+  posts:
+    output: true
+    permalink: /:collection/:year/:month/:day/:title/
+
+# Defaults
+defaults:
+  - scope:
+      path: ""
+      type: "posts"
+    values:
+      layout: "post"
+      author: "800m Athletics"
+
+# Exclude from processing
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - node_modules
+  - vendor
+  - README.md
+
+# Plugins
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag
